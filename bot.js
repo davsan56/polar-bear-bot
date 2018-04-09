@@ -29,15 +29,25 @@ client.on("message", async message => {
   
   // Also good practice to ignore any message that does not start with our prefix, 
   // which is set in the configuration file.
-  if(message.content.indexOf(config.prefix) !== 0) return;
+//   if(message.content.indexOf(config.prefix) !== 0) return;
+  var prefix1 = true;
+  if (message.content.indexOf(config.prefix) == 0) {
+    prefix1 = true;
+  } else {
+    if (message.content.indexOf(config.prefix2) == 0) {
+      prefix1 = false;
+    } else {
+        return;
+    }
+  }
   
   // Here we separate our "command" name, and our "arguments" for the command. 
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix1 ? config.prefix.length : config.prefix2.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  
+  console.log(prefix1 + ": " + command + ": " + args)
   // Let's go with a few common example commands! Feel free to delete or change those.
   
   if (command === "ping") {
@@ -48,12 +58,17 @@ client.on("message", async message => {
   }
 
   if (command === "") {
-      const m = await message.channel.send("Hi guys, hope this brings good luck");
+    const m = await message.channel.send("Hi guys, hope this brings good luck");
   }
 
   if (command === "help") {
-      const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?'\nAvailable commands:\nping and help";
-      const m = await message.channel.send(string);
+    const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?'\nAvailable commands:\nping and help";
+    const m = await message.channel.send(string);
+  }
+
+  if (command === "github") {
+    const string = "Check out how I work here! https://github.com/davsan56/polar-bear-bot";
+    const m = await message.channel.send(string);
   }
 });
 
