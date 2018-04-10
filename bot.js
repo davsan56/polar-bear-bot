@@ -37,7 +37,7 @@ client.on("message", async message => {
     if (message.content.indexOf(config.prefix2) == 0) {
       prefix1 = false;
     } else {
-        return;
+      return;
     }
   }
   
@@ -47,9 +47,8 @@ client.on("message", async message => {
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.slice(prefix1 ? config.prefix.length : config.prefix2.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  console.log(prefix1 + ": " + command + ": " + args)
-  // Let's go with a few common example commands! Feel free to delete or change those.
   
+  // Let's go with a few common example commands! Feel free to delete or change those.
   if (command === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
@@ -58,7 +57,8 @@ client.on("message", async message => {
   }
 
   if (command === "") {
-    const m = await message.channel.send("Hi guys, hope this brings good luck");
+    var string = "Hi guys, hope this brings good luck";
+    const m = await message.channel.send(string);
   }
 
   if (command === "help") {
