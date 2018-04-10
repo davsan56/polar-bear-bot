@@ -31,10 +31,10 @@ client.on("message", async message => {
   // which is set in the configuration file.
 //   if(message.content.indexOf(config.prefix) !== 0) return;
   var prefix1 = true;
-  if (message.content.indexOf(config.prefix) == 0) {
+  if (message.content.toLowerCase().indexOf(config.prefix) == 0) {
     prefix1 = true;
   } else {
-    if (message.content.indexOf(config.prefix2) == 0) {
+    if (message.content.toLowerCase().indexOf(config.prefix2) == 0) {
       prefix1 = false;
     } else {
       return;
