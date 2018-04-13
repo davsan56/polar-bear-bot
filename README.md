@@ -8,10 +8,10 @@ To use this bot, type 'polarbear?' or 'pb?'. This will display a good luck messa
 
 ## Commands
 
-help -> displays the help screen
-ping -> shows latency to servers
-'' -> (empty string) sends good luck message
-github -> sends link to this github
+* help -> displays the help screen
+* ping -> shows latency to servers
+* '' -> (empty string) sends good luck message
+* github -> sends link to this github
 
 ## Contribute
 
