@@ -72,6 +72,4 @@ client.on("message", async message => {
   }
 });
 
-console.log("here")
-console.log(process.env)
 client.login(process.env.DISCORD_AUTH);
