@@ -1,5 +1,4 @@
 {
-   "token": process.env.discord-auth,
    "prefix": "polarbear?",
    "prefix2": "pb?"
 }
