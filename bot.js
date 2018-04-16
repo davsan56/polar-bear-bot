@@ -6,10 +6,10 @@ const Discord = require("discord.js");
 // this is what we're refering to. Your client.
 const client = new Discord.Client();
 
-// Here we load the config.json file that contains our token and our prefix values. 
-const config = require("./auth.json");
-// config.token contains the bot's token
-// config.prefix contains the message prefix.
+// Here we load the prefixes.json file that contains our token and our prefix values. 
+const prefixes = require("./prefix.json");
+// prefixes.token contains the bot's token
+// prefixes.prefix contains the message prefix.
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -29,12 +29,12 @@ client.on("message", async message => {
   
   // Also good practice to ignore any message that does not start with our prefix, 
   // which is set in the configuration file.
-//   if(message.content.indexOf(config.prefix) !== 0) return;
+//   if(message.content.indexOf(prefixes.prefix) !== 0) return;
   var prefix1 = true;
-  if (message.content.toLowerCase().indexOf(config.prefix) == 0) {
+  if (message.content.toLowerCase().indexOf(prefixes.prefix) == 0) {
     prefix1 = true;
   } else {
-    if (message.content.toLowerCase().indexOf(config.prefix2) == 0) {
+    if (message.content.toLowerCase().indexOf(prefixes.prefix2) == 0) {
       prefix1 = false;
     } else {
       return;
@@ -45,7 +45,7 @@ client.on("message", async message => {
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(prefix1 ? config.prefix.length : config.prefix2.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix1 ? prefixes.prefix.length : prefixes.prefix2.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
@@ -72,4 +72,6 @@ client.on("message", async message => {
   }
 });
 
-client.login(process.env.discord-auth);
+console.log("here")
+console.log(process.env)
+client.login(process.env.DISCORD_AUTH);
