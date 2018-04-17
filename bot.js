@@ -13,10 +13,10 @@ const prefixes = require("./prefix.json");
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
-  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  console.log(`Bot has started, with ${client.users.filter(user => !user.bot).size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
+  client.user.setActivity(`on ${client.guilds.size} servers`);
 });
 
 
@@ -29,7 +29,6 @@ client.on("message", async message => {
   
   // Also good practice to ignore any message that does not start with our prefix, 
   // which is set in the configuration file.
-//   if(message.content.indexOf(prefixes.prefix) !== 0) return;
   var prefix1 = true;
   if (message.content.toLowerCase().indexOf(prefixes.prefix) == 0) {
     prefix1 = true;
@@ -62,7 +61,7 @@ client.on("message", async message => {
   }
 
   if (command === "help") {
-    const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?'\nAvailable commands:\nping and help";
+    const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?'\nAvailable commands:\nping, help, github";
     const m = await message.channel.send(string);
   }
 
