@@ -61,7 +61,7 @@ client.on("message", async message => {
   }
 
   if (command === "help") {
-    const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?'\nAvailable commands:\nping, help, github";
+    const string = "Hi! Polar Bear brings good luck to spawn random Pokemon! To use type 'polarbear?' or 'pb?'\nAvailable commands:\nping, help, github";
     const m = await message.channel.send(string);
   }
 
